@@ -1,4 +1,9 @@
-:root{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root {
   --bg-primary: #333;
 }
 

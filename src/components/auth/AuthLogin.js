@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
-import { ClientContext } from '../../provider/ClientContext';
+//import { ClientContext } from '../../provider/ClientContext';
 
 export const AuthLogin = () => {
 

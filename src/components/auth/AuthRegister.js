@@ -1,17 +1,27 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-    CardWrapper,
-    CardHeader,
-    CardHeading,
-    CardBody,
-    CardFieldset,
-    CardInput,
-    CardButton,
-    CardLink
-} from './CardAuth';
+
+import { useForm } from '../../hooks/useForm';
+import { InputRegister } from './InputRegister';
 
 export const AuthRegister = () => {
+
+    const [formValues, handleInputChange] = useForm({
+        name: '',
+        lastName: '',
+        password: '',
+        passwordConfirmed: '',
+        email: '',
+        city: '',
+        address: '',
+        phone: ''
+    });
+
+    const {
+        name, lastName,
+        password, passwordConfirmed,
+        email, city,
+        address, phone } = formValues;
 
     const navigate = useNavigate();
 
@@ -19,61 +29,107 @@ export const AuthRegister = () => {
         navigate('/login');
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formValues);
+    }
+
     return (
-        <>
-            <CardFieldset >
-                <img src='/assets/logo.png' width={750} />
-            </CardFieldset>
+        <section className="max-w-4xl p-6 mx-auto bg-gray-800 rounded-lg shadow-xl shadow-gray-900 backdrop-blur-sm dark:bg-gray-800">
+            <h2 className="text-3xl font-bold text-center text-gray-200 dark:text-white">Registro de clientes</h2>
+            <form>
+                <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
 
-            <CardWrapper>
-                <CardHeader>
-                    <CardHeading>Registro de usuario</CardHeading>
-                </CardHeader>
+                    <InputRegister
+                        label='Nombre'
+                        name='name'
+                        type='text'
+                        place='ej. John'
+                        value={name}
+                        handle={handleInputChange}
+                    />
 
-                <CardBody>
-                    <CardFieldset>
-                        <CardInput placeholder="Nombre" type="text" autoComplete='off' required />
-                    </CardFieldset>
+                    <InputRegister
+                        label='Apellido'
+                        name='lastName'
+                        type='text'
+                        place='ej. Doe'
+                        value={lastName}
+                        handle={handleInputChange}
+                    />
 
-                    <CardFieldset>
-                        <CardInput placeholder="Apellido" type="text" autoComplete='off' required />
-                    </CardFieldset>
+                    <InputRegister
+                        label='Contraseña'
+                        name='password'
+                        type='password'
+                        place='ej. ********'
+                        value={password}
+                        handle={handleInputChange}
+                    />
 
-                    <CardFieldset>
-                        <CardInput placeholder="Contraseña" type="password" autoComplete='off' required />
-                    </CardFieldset>
+                    <InputRegister
+                        label='Confirmacion Contraseña'
+                        name='passwordConfirmed'
+                        type='password'
+                        place='ej. ********'
+                        value={passwordConfirmed}
+                        handle={handleInputChange}
+                    />
 
-                    <CardFieldset>
-                        <CardInput placeholder="E-mail" type="email" autoComplete='off' required />
-                    </CardFieldset>
+                    <InputRegister
+                        label='Correo'
+                        name='email'
+                        type='email'
+                        place='ej. John@gmail.com'
+                        value={email}
+                        handle={handleInputChange}
+                    />
 
-                    <CardFieldset>
-                        <CardInput placeholder="Ciudad" type="text" autoComplete='off' required />
-                    </CardFieldset>
+                    <InputRegister
+                        label='Ciudad'
+                        name='city'
+                        type='text'
+                        place='ej. Tota'
+                        value={city}
+                        handle={handleInputChange}
+                    />
 
-                    <CardFieldset>
-                        <CardInput placeholder="Direccion" type="text" autoComplete='off' required />
-                    </CardFieldset>
+                    <InputRegister
+                        label='Direccion'
+                        name='address'
+                        type='text'
+                        place='ej. Calle 10 #21-12'
+                        value={address}
+                        handle={handleInputChange}
+                    />
 
-                    <CardFieldset>
-                        <CardInput placeholder="Celular" type="number" autoComplete='off' required />
-                    </CardFieldset>
-
-                    <CardFieldset>
-                        <CardButton
-                            type="button"
-                            onClick={() => console.log('Registrase')}
-                        >
-                            Registrarse
-                        </CardButton>
-                    </CardFieldset>
-
-                    <CardFieldset>
-                        <CardLink onClick={handleLogin}>Ya tengo cuenta</CardLink>
-                    </CardFieldset>
-
-                </CardBody>
-            </CardWrapper>
-        </>
+                    <InputRegister
+                        label='Celular'
+                        name='phone'
+                        type='text'
+                        place='ej. ##########'
+                        value={phone}
+                        handle={handleInputChange}
+                    />
+                </div>
+                <div className="flex justify-end mt-6">
+                    <button
+                        className=" basis-1 px-8 text-lg py-4 leading-5 text-gray-200 transition-colors duration-200 transform bg-gray-900 rounded-md  hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                        onClick={handleSubmit}
+                        type='onSubmit'
+                    >
+                        Registrarse
+                    </button>
+                </div>
+                <div className='justify-end mt-6'>
+                    <a
+                        className="basis-1 text-lg text-gray-200 cursor-pointer hover:text-gray-400 underline"
+                        onClick={handleLogin}
+                    >
+                        Ya estoy registrado
+                    </a>
+                </div>
+            </form>
+        </section>
     )
 }

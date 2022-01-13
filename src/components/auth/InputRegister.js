@@ -21,7 +21,7 @@ export const InputRegister = ({ label, name, type, place, value, handle }) => {
     )
 }
 
-InputRegister.propTypes ={
+InputRegister.propTypes = {
     label: PropTypes.string,
     name: PropTypes.string,
     type: PropTypes.string,

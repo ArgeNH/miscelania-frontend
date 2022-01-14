@@ -12,7 +12,7 @@ export const ProductCategory = ({ nameCategory }) => {
 
     const { data } = useSWR(url, fetcher);
 
-    const product = getProductByCategory(nameCategory, data?.products)
+    const product = getProductByCategory(nameCategory, data?.products);
 
     return (
         <div>

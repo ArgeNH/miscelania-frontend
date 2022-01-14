@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 export const CardProduct = ({ route, nameCategory, img }) => {
     return (
-        <Link to={route} className="w-full max-w-xs text-center">
+        <Link to={route} className="w-full max-w-xs text-center rounded-lg bg-gray-900">
             <img className="object-cover object-center w-full h-48 mx-auto rounded-lg" src={img} alt={nameCategory} />
 
             <div className="mt-2">
-                <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">{nameCategory}</h3>
+                <h3 className="text-lg font-medium text-gray-200 dark:text-gray-700">{nameCategory}</h3>
             </div>
         </Link>
     )

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export const CardProduct = ({ route, nameCategory, img }) => {
     return (
-        <Link to={route} className="w-full max-w-xs text-center rounded-lg bg-gray-900">
+        <Link to={route} className="w-full max-w-xs text-center rounded-lg bg-gray-900 animate__animated animate__zoomIn">
             <img className="object-cover object-center w-full h-48 mx-auto rounded-lg" src={img} alt={nameCategory} />
 
             <div className="mt-2">

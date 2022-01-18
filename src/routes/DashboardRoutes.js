@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { Error404 } from '../components/alerts/Error404';
 
 import { ShoppingScreen } from '../components/cart/ShoppingScreen';
+import { Footer } from '../components/footer/Footer';
 import { Home } from '../components/home/Home';
 import { Nabvar } from '../components/navbar/Nabvar';
 import { Cleanliness } from '../components/product/category/Cleanliness';
@@ -35,6 +36,7 @@ export const DashboardRoutes = () => {
                     <Route path='*' element={<Navigate to='/404' />} />
                 </Routes>
             </div>
+            <Footer />
         </>
     )
 }

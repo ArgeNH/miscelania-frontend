@@ -1,5 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
+
 import { fetcher } from '../../../utils/fetcher';
 import DataTable from './DataTable';
 

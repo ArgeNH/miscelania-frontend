@@ -1,17 +1,13 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { InputProduct } from './InputProduct';
 
 export const ProductAdd = () => {
 
-    const formRef = useRef();
-
-    console.log(formRef.current);
-
     return (
         <div className="w-full max-w-3xl p-3 m-auto bg-white rounded-md shadow-md  mt-5 dark:bg-gray-800">
 
-            <form ref={formRef}>
+            <form>
                 <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <InputProduct
                         label='Codigo'

@@ -15,7 +15,6 @@ export const ProductScreen = () => {
 
                     <TableProduct />
 
-
             </div>
         </section>
     )

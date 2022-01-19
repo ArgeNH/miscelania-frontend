@@ -6,7 +6,7 @@ export const ProductAdd = () => {
 
     const formRef = useRef();
 
-    console.log(formRef.current?.value);
+    console.log(formRef.current);
 
     return (
         <div className="w-full max-w-3xl p-3 m-auto bg-white rounded-md shadow-md  mt-5 dark:bg-gray-800">

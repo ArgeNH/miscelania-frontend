@@ -2,11 +2,11 @@ import React from 'react';
 
 export const Information = () => {
     return (
-        <section className="bg-gray-200 animate__animated animate__slideInLeft">
+        <section className="bg-gray-200 ">
             <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 sm:py-24">
                 <div className="grid grid-cols-1 gap-8 mt-2 lg:grid-cols-2">
 
-                    <div className="relative h-64 lg:h-auto">
+                    <div className="relative h-64 lg:h-auto animate__animated animate__fadeIn">
 
                         <div className="block">
                             <img
@@ -28,7 +28,7 @@ export const Information = () => {
 
                     </div>
 
-                    <div className="relative h-64 lg:h-auto">
+                    <div className="relative h-64 lg:h-auto animate__animated animate__fadeIn">
 
                         <div className="block">
                             <img

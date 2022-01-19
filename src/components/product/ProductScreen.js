@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ProductAdd } from '../admin/product/ProductAdd';
+
 export const ProductScreen = () => {
     return (
         <section className="bg-gray-100 mt-10">
@@ -10,12 +12,13 @@ export const ProductScreen = () => {
 
                 <div className="grid grid-cols-1 gap-8 mt-12 lg:grid-cols-2">
                     <div className="relative h-64 lg:h-auto">
-
+                        <ProductAdd />
                     </div>
 
-                    <div className="prose prose-lg lg:pb-16">
-
+                    <div className="relative h-64 lg:h-auto">
+                        <ProductAdd />
                     </div>
+
                 </div>
             </div>
         </section>

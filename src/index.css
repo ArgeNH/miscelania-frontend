@@ -1,12 +1,4 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
-
-:root {
-  --bg-primary: #333;
-}
-
 
 body {
   margin: 0;
@@ -17,3 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
 }
+
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;

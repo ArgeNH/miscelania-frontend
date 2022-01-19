@@ -8,6 +8,8 @@ export const Nabvar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
+    const open = () => setIsOpen(!isOpen);
+
     /*     const handleLogout = () => {
             navigate('/login', {
                 replace: true
@@ -15,23 +17,25 @@ export const Nabvar = () => {
         } */
 
     return (
-        <Nav>
-            <Logo to='/'>
-                Miscelánea<span>Rodríguez</span>
-            </Logo>
-            <Hamburger onClick={() => setIsOpen(!isOpen)}>
-                <span />
-                <span />
-                <span />
-            </Hamburger>
-            <Menu isOpen={isOpen}>
-                <MenuLink to='/'>Inicio</MenuLink>
-                <MenuLink to='/productos'>Productos</MenuLink>
-                <MenuLink to='/promociones'>Promociones</MenuLink>
-                <MenuLink to='/compra'>🛒</MenuLink>
-                <MenuLink to='/login'>Login</MenuLink>
-            </Menu>
-        </Nav>
+        <>
+            <Nav>
+                <Logo to='/'>
+                    Miscelánea<span>Rodríguez</span>
+                </Logo>
+                <Hamburger onClick={open}>
+                    <span />
+                    <span />
+                    <span />
+                </Hamburger>
+                <Menu isOpen={isOpen}>
+                    <MenuLink to='/' onClick={open}>Inicio</MenuLink>
+                    <MenuLink to='/productos' onClick={open}>Productos</MenuLink>
+                    <MenuLink to='/promociones' onClick={open}>Promociones</MenuLink>
+                    <MenuLink to='/compra' onClick={open}>🛒</MenuLink>
+                    <MenuLink to='/login' >Login</MenuLink>
+                </Menu>
+            </Nav>
+        </>
     )
 }
 
@@ -57,6 +61,7 @@ const Nav = styled.div`
     top: 0;
     left: 0;
     right: 0;
+    z-index: 2;
 `;
 
 const Logo = styled(Link)`

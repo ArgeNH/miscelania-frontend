@@ -82,7 +82,7 @@ export const AuthRegister = () => {
 
     return (
         <>
-            <section className="max-w-4xl p-6 mx-auto bg-gray-800 rounded-lg shadow-xl shadow-gray-900 backdrop-blur-sm dark:bg-gray-800">
+            <section className="max-w-4xl p-6 mx-auto bg-gray-800 rounded-lg shadow-xl shadow-gray-900 backdrop-blur-sm dark:bg-gray-800 mt-20">
                 <h2 className="text-3xl font-bold text-center text-gray-200 dark:text-white">Registro de clientes</h2>
                 <form>
                     <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">

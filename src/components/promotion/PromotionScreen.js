@@ -1,9 +1,8 @@
 import React from 'react';
-import './promotion.css';
 
 export const PromotionScreen = () => {
     return (
-        <div>
+        <div className='mt-20'>
             <h1>Promotion Screen</h1>
         </div>
     )

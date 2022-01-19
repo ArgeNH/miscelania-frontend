@@ -1,9 +1,8 @@
 import React from 'react';
-import './cart.css';
 
 export const ShoppingScreen = () => {
     return (
-        <div>
+        <div className='mt-20'>
             <h1>Shopping Screen</h1>
         </div>
     )

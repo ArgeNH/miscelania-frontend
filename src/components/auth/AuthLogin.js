@@ -29,7 +29,7 @@ export const AuthLogin = () => {
     }
 
     return (
-        <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-800 rounded-lg shadow-md dark:bg-white">
+        <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-800 rounded-lg shadow-md dark:bg-white mt-20">
             <div className="px-6 py-4">
                 <h2 className="text-3xl font-bold text-center text-white dark:text-gray-700">Miscelánea Rodríguez</h2>
 

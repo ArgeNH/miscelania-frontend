@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { setFormatPrice } from '../../../helpers/setFormatPrice';
+
 export const CardItem = ({ nameProduct, price, url }) => {
 
-    const formatPrice = new Intl.NumberFormat('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0
-    }).format(price);
+    const formatPrice = setFormatPrice(price);
 
     return (
         <div className="flex flex-col items-center justify-center w-full max-w-lg mx-auto animate__animated animate__fadeInLeft">

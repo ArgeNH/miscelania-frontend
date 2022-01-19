@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const InputProduct = ({ label, name, type, place, value, handle }) => {
     return (
         <div className='mt-3'>
-            <label className="block text-md text-gray-900 dark:text-gray-200">{label}</label>
+            <label className="block text-md text-gray-900 font-medium dark:text-gray-200">{label}</label>
             <input
                 name={name}
                 type={type}

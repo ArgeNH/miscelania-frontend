@@ -1,45 +1,49 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { InputProduct } from './InputProduct';
 
 export const ProductAdd = () => {
 
+    const formRef = useRef();
+
+    console.log(formRef.current?.value);
+
     return (
-        <div className="w-full max-w-sm p-3 m-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+        <div className="w-full max-w-3xl p-3 m-auto bg-white rounded-md shadow-md  mt-5 dark:bg-gray-800">
 
-            <form>
+            <form ref={formRef}>
+                <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <InputProduct
+                        label='Codigo'
+                        name='code'
+                        place='132AFG'
+                        type='text'
+                    />
 
-                <InputProduct
-                    label='Codigo'
-                    name='code'
-                    place='132AFG'
-                    type='text'
-                />
+                    <InputProduct
+                        label='Nombre Producto'
+                        name='nameProduct'
+                        place='Arroz'
+                        type='text'
+                    />
 
-                <InputProduct
-                    label='Nombre Producto'
-                    name='nameProduct'
-                    place='Arroz'
-                    type='text'
-                />
+                    <InputProduct
+                        label='Precio'
+                        name='price'
+                        place='12800'
+                        type='number'
+                    />
 
-                <InputProduct
-                    label='Precio'
-                    name='price'
-                    place='12800'
-                    type='number'
-                />
+                    <InputProduct
+                        label='Cantidad'
+                        name='cant'
+                        place='20'
+                        type='number'
+                    />
 
-                <InputProduct
-                    label='Cantidad'
-                    name='cant'
-                    place='20'
-                    type='number'
-                />
-
-                <div className="mt-3 w-auto">
-                    <label className="block text-md text-gray-900 dark:text-gray-200">Categoria</label>
-                    <select className="form-select appearance-none
+                    <div className="mt-3 w-auto">
+                        <label className="block text-md text-gray-900 font-medium dark:text-gray-200">Categoria</label>
+                        <select className="form-select appearance-none
                             block
                             w-full
                             px-3
@@ -54,28 +58,29 @@ export const ProductAdd = () => {
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                        <option selected>Seleccione la categoria...</option>
-                        <option value="PAPELERIA">Papeleria</option>
-                        <option value="FARMACIA">Farmacia</option>
-                        <option value="ASEO">Aseo</option>
-                        <option value="HOGAR">Hogar</option>
-                        <option value="FERRETERIA">Ferreteria</option>
-                        <option value="OTROS">Otros</option>
-                        <option value="PROMOCION">Promoción</option>
-                    </select>
-                </div>
+                            <option defaultValue>Seleccione la categoria...</option>
+                            <option value="PAPELERIA">Papeleria</option>
+                            <option value="FARMACIA">Farmacia</option>
+                            <option value="ASEO">Aseo</option>
+                            <option value="HOGAR">Hogar</option>
+                            <option value="FERRETERIA">Ferreteria</option>
+                            <option value="OTROS">Otros</option>
+                            <option value="PROMOCION">Promoción</option>
+                        </select>
+                    </div>
 
-                <InputProduct
-                    label='Imagen'
-                    name='image'
-                    type='file'
-                />
+                    <InputProduct
+                        label='Imagen'
+                        name='image'
+                        type='file'
+                    />
 
-                <div className="mt-6">
-                    <button
-                        className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                        Añadir Producto
-                    </button>
+                    <div className="mt-1">
+                        <button
+                            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                            Añadir Producto
+                        </button>
+                    </div>
                 </div>
             </form>
 

@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
 
-import { ClientContext } from './provider/ClientContext';
+import { store } from './store/store';
 import { AppRouter } from './routes/AppRouter';
 
-function App() {
+export const App = () => {
 
-  const [client, setClient] = useState({});
-
-  return (
-    <ClientContext.Provider value={{ client, setClient }}>
-      <AppRouter />
-    </ClientContext.Provider>
-  );
+   return (
+      <Provider store={store}>
+         <AppRouter />
+      </Provider>
+   );
 }
-
-export default App;

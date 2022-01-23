@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import { CardItem } from './CardItem';
 import { fetcher } from '../../../utils/fetcher';
 import { getProductByCategory } from '../../../helpers/getProductByCategory';
+import { Skeleton } from './Skeleton';
 
 export const ProductCategory = ({ nameCategory }) => {
 
@@ -12,7 +13,7 @@ export const ProductCategory = ({ nameCategory }) => {
 
    const { data } = useSWR(url, fetcher);
 
-   if (!data) return <div>loading...</div>
+   if (!data) return <Skeleton />
 
    const product = getProductByCategory(nameCategory, data?.products);
 

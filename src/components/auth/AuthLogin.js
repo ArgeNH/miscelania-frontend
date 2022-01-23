@@ -23,6 +23,7 @@ export const AuthLogin = () => {
    const navigate = useNavigate();
 
    const handleRegister = () => {
+      dispatch(removeError());
       navigate('/register', {
          replace: true
       });

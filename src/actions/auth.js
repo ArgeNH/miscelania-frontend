@@ -1,8 +1,9 @@
 import { types } from "../types/types";
+import { setError } from "./ui";
 
 export const startLoginWithEmailAndPassword = (email, password) => {
    return async (dispatch) => {
-      await fetch('https://miscelanea-api.herokuapp.com/api/user/signIn', {
+      await fetch('https://miscelanea-api.herokuapp.com/api/user/signin', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'
@@ -14,6 +15,10 @@ export const startLoginWithEmailAndPassword = (email, password) => {
       })
          .then(response => response.json())
          .then(data => {
+            if (data.success === false) {
+               dispatch(setError(data.error, data.nameError));
+               return false;
+            }
             const { user } = data;
             dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role));
          })
@@ -23,7 +28,7 @@ export const startLoginWithEmailAndPassword = (email, password) => {
 
 export const startRegister = (name, lastName, password, email, city, address, phone) => {
    return async (dispatch) => {
-      await fetch('https://miscelanea-api.herokuapp.com/api/user/signUp', {
+      await fetch('https://miscelanea-api.herokuapp.com/api/user/signup', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'

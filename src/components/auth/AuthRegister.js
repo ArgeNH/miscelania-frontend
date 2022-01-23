@@ -34,6 +34,7 @@ export const AuthRegister = () => {
       address, phone } = formValues;
 
    const handleLogin = () => {
+      dispatch(removeError());
       navigate('/login');
    }
 

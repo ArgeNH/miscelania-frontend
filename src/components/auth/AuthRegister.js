@@ -59,7 +59,7 @@ export const AuthRegister = () => {
          dispatch(setError('El email no es correcto', 'Email'));
          return false;
       } else if (city.trim().length === 0) {
-         dispatch(setError('El campo de ciudad se encuentra vacio','Ciudad'));
+         dispatch(setError('El campo de ciudad se encuentra vacio', 'Ciudad'));
          return false;
       } else if (address.trim().length === 0) {
          dispatch(setError('El campo de direccion se encuentra vacio', 'Direccion'));

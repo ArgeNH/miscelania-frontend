@@ -23,18 +23,19 @@ export const DashboardRoutes = () => {
          <div className='container mx-auto px-4'>
             <Routes>
                <Route path='/' element={<Home />} />
-               <Route path='productos' element={<ProductScreen />} />
                <Route path='promociones' element={<PromotionScreen />} />
-               <Route path='compra' element={<ShoppingScreen />} />
                <Route path='papeleria' element={<Stationery />} />
                <Route path='farmacia' element={<Pharmacy />} />
                <Route path='aseo' element={<Cleanliness />} />
                <Route path='hogar' element={<Menage />} />
                <Route path='ferreteria' element={<IronStore />} />
                <Route path='otros' element={<Others />} />
-               <Route path='productos/:code/:name' element={<ProductSelected />} />
-
                <Route path='404' element={<Error404 />} />
+
+               <Route path='productos/:code/:name' element={<ProductSelected />} />
+               <Route path='productos' element={<ProductScreen />} />
+               <Route path='compra' element={<ShoppingScreen />} />
+
                <Route path='*' element={<Navigate to='/404' />} />
             </Routes>
          </div>

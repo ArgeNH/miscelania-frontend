@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const Nabvar = () => {
 
    /* const navigate = useNavigate(); */
+
+   const { role } = useSelector(state => state.auth);
 
    const [isOpen, setIsOpen] = useState(false);
 
@@ -29,7 +32,7 @@ export const Nabvar = () => {
             </Hamburger>
             <Menu isOpen={isOpen}>
                <MenuLink to='/' onClick={open}>Inicio</MenuLink>
-               <MenuLink to='/productos' onClick={open}>Productos</MenuLink>
+               {role === 'ADMIN' && <MenuLink to='/productos' onClick={open}>Productos</MenuLink>}
                <MenuLink to='/promociones' onClick={open}>Promociones</MenuLink>
                <MenuLink to='/compra' onClick={open}>🛒</MenuLink>
                <MenuLink to='/login' >Login</MenuLink>

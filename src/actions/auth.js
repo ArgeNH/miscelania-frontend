@@ -1,5 +1,5 @@
 import { types } from "../types/types";
-import { setError } from "./ui";
+import { setError, startLoading } from "./ui";
 
 export const startLoginWithEmailAndPassword = (email, password) => {
    return async (dispatch) => {
@@ -20,7 +20,8 @@ export const startLoginWithEmailAndPassword = (email, password) => {
                return false;
             }
             const { user } = data;
-            dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role));
+            dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, data.token));
+            dispatch(startLoading());
          })
          .catch(err => console.log(err));
    }
@@ -46,13 +47,14 @@ export const startRegister = (name, lastName, password, email, city, address, ph
          .then(response => response.json())
          .then(data => {
             const { user } = data;
-            dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role));
+            dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, data.token));
+            dispatch(startLoading());
          })
          .catch(err => console.log(err));
    }
 }
 
-export const login = (_id, name, lastName, email, city, address, phone, role) => ({
+export const login = (_id, name, lastName, email, city, address, phone, role, token) => ({
    type: types.login,
    payload: {
       _id,
@@ -62,7 +64,8 @@ export const login = (_id, name, lastName, email, city, address, phone, role) =>
       city,
       address,
       phone,
-      role
+      role,
+      token
    }
 })
 

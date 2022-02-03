@@ -16,7 +16,7 @@ export const InputProduct = ({ label, name, type, place, value, handle }) => {
       </div>
    );
 };
-
+//eslint-disable-next-line
 InputProduct.propTypes = {
    label: PropTypes.string,
    name: PropTypes.string,

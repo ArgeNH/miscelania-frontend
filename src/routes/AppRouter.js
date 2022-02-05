@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { startChecking } from '../actions/auth';
 
 import { AuthLogin } from '../components/auth/AuthLogin';
 import { AuthRegister } from '../components/auth/AuthRegister';
@@ -8,6 +10,13 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
+
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      dispatch(startChecking());
+   }, [dispatch]);
+
    return (
       <BrowserRouter>
          <Routes>

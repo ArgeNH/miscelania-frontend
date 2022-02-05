@@ -20,6 +20,8 @@ export const startLoginWithEmailAndPassword = (email, password) => {
                return false;
             }
             const { user } = data;
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, data.token));
             dispatch(startLoading());
          })
@@ -47,12 +49,35 @@ export const startRegister = (name, lastName, password, email, city, address, ph
          .then(response => response.json())
          .then(data => {
             const { user } = data;
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, data.token));
             dispatch(startLoading());
          })
          .catch(err => console.log(err));
    }
 }
+
+export const startChecking = () => {
+   return async (dispatch) => {
+      const token = localStorage.getItem('token') || '';
+      const data = await fetch('https://miscelanea-api.herokuapp.com/api/user/token/renew', {
+         headers: {
+            'x-token': token
+         }
+      });
+      const response = await data.json();
+      if (response.success === true) {
+         localStorage.setItem('token', response.token);
+         localStorage.setItem('token-init-date', new Date().getTime());
+         const { user } = response;
+         dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, response.token));
+      }
+      dispatch(checkingFinish());
+   }
+}
+
+const checkingFinish = () => ({ type: types.authCheckingFinished });
 
 export const login = (_id, name, lastName, email, city, address, phone, role, token) => ({
    type: types.login,

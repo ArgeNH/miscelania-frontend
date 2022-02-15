@@ -1,14 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useSWR from 'swr';
+
+import { useForm } from '../../../hooks/useForm';
 import { fetcher } from '../../../utils/fetcher';
+import { InputProduct } from './InputProduct';
 
 export const ProductModalUpdate = ({ code, modal }) => {
 
    const url = `https://miscelanea-api.herokuapp.com/api/product/${code}`
    const { data } = useSWR(url, fetcher);
 
+   const [formValues, handleInputChange] = useForm({
+      nameProduct: data?.product[0].nameProduct,
+      price: data?.product[0].price,
+      cant: data?.product[0].cant,
+      category: data?.product[0].category,
+   });
+
+   const { nameProduct, price, cant, category } = formValues;
+
    if (!data) return <div>loading...</div>
+
+   const handleUpdateProduct = async (e) => {
+      e.preventDefault();
+      
+   }  
 
    return (
       <>
@@ -34,13 +51,69 @@ export const ProductModalUpdate = ({ code, modal }) => {
                   </div>
                   {/*body*/}
                   <div className="relative p-6 flex-auto">
-                     <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                        I always felt like I could do anything. That’s the main
-                        thing people are controlled by! Thoughts- their perception
-                        of themselves! Theyre slowed down by their perception of
-                        themselves. If youre taught you can’t do anything, you
-                        won’t do anything. I was taught I could do everything.
-                     </p>
+                     <form onSubmit={handleUpdateProduct}>
+
+                        <InputProduct
+                           label='Nombre Producto'
+                           name='nameProduct'
+                           place='Arroz'
+                           type='text'
+                           value={nameProduct}
+                           handle={handleInputChange}
+                        />
+
+                        <InputProduct
+                           label='Precio'
+                           name='price'
+                           place='12800'
+                           type='number'
+                           value={price}
+                           handle={handleInputChange}
+                        />
+
+                        <InputProduct
+                           label='Cantidad'
+                           name='cant'
+                           place='20'
+                           type='number'
+                           value={cant}
+                           handle={handleInputChange}
+                        />
+
+                        <div className="mt-3 w-auto">
+                           <label className="block text-md text-gray-900 font-medium dark:text-gray-200">Categoria</label>
+                           <select className="form-select appearance-none
+                                    block
+                                    w-full
+                                    px-3
+                                    py-1.5
+                                    text-base
+                                    font-normal
+                                    text-gray-700
+                                    bg-white bg-clip-padding bg-no-repeat
+                                    border border-solid border-gray-300
+                                    rounded
+                                    transition
+                                    ease-in-out
+                                    m-0
+                                    focus:text-gray-700 focus:bg-white 
+                                    focus:border-blue-600 focus:outline-none"
+                              aria-label="Default select example"
+                              name='category'
+                              value={category}
+                              onChange={handleInputChange}>
+                              <option defaultValue>Seleccione la categoria...</option>
+                              <option value="PAPELERIA">Papeleria</option>
+                              <option value="FARMACIA">Farmacia</option>
+                              <option value="ASEO">Aseo</option>
+                              <option value="HOGAR">Hogar</option>
+                              <option value="FERRETERIA">Ferreteria</option>
+                              <option value="OTROS">Otros</option>
+                              <option value="PROMOCION">Promoción</option>
+                           </select>
+                        </div>
+
+                     </form>
                   </div>
                   {/*footer*/}
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

@@ -1,31 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useSWR from 'swr';
 
 import { useForm } from '../../../hooks/useForm';
-import { fetcher } from '../../../utils/fetcher';
 import { InputProduct } from './InputProduct';
 
-export const ProductModalUpdate = ({ code, modal }) => {
-
-   const url = `https://miscelanea-api.herokuapp.com/api/product/${code}`
-   const { data } = useSWR(url, fetcher);
+export const ProductModalUpdate = ({ code, modal, nameProduct: name, category: type, price: cash, cant: stock }) => {
 
    const [formValues, handleInputChange] = useForm({
-      nameProduct: data?.product[0].nameProduct,
-      price: data?.product[0].price,
-      cant: data?.product[0].cant,
-      category: data?.product[0].category,
+      nameProduct: name,
+      price: cash,
+      cant: stock,
+      category: type,
    });
+
+   console.log(code);
+   
 
    const { nameProduct, price, cant, category } = formValues;
 
-   if (!data) return <div>loading...</div>
-
    const handleUpdateProduct = async (e) => {
       e.preventDefault();
-      
-   }  
+      //fetch update
+   }
 
    return (
       <>
@@ -38,7 +34,7 @@ export const ProductModalUpdate = ({ code, modal }) => {
                   {/*header*/}
                   <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                      <h3 className="text-3xl font-semibold">
-                        Actualizar Producto - {data.product[0].nameProduct}
+                        Actualizar Producto - {nameProduct}
                      </h3>
                      <button
                         className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -140,7 +136,12 @@ export const ProductModalUpdate = ({ code, modal }) => {
    );
 };
 
+//eslint-disable-next-line
 ProductModalUpdate.propTypes = {
    code: PropTypes.string,
-   modal: PropTypes.func
+   modal: PropTypes.func,
+   nameProduct: PropTypes.string,
+   category: PropTypes.string,
+   price: PropTypes.number,
+   cant: PropTypes.number,
 };

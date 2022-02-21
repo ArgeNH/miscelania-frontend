@@ -38,8 +38,8 @@ export const ProductAdd = () => {
          body: formData
       })
          .then(response => response.json())
+         //eslint-disable-next-line
          .then(data => {
-            console.log(data);
             if (data.success) {
                Swal.fire({
                   title: 'Producto Agregado',

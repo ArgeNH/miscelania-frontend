@@ -14,9 +14,6 @@ export const ProductModalUpdate = ({ code, modal, nameProduct: name, category: t
       category: type,
    });
 
-   console.log(code);
-
-
    const { nameProduct, price, cant, category } = formValues;
 
    const handleUpdateProduct = async (e) => {
@@ -34,8 +31,8 @@ export const ProductModalUpdate = ({ code, modal, nameProduct: name, category: t
          })
       })
          .then(response => response.json())
+         //eslint-disable-next-line
          .then(data => {
-            console.log(data);
             Swal.fire({
                title: 'Producto Actualizado',
                text: 'El producto se ha actualizado correctamente',

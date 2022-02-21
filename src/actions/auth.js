@@ -72,8 +72,11 @@ export const startChecking = () => {
          localStorage.setItem('token-init-date', new Date().getTime());
          const { user } = response;
          dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, response.token));
+         dispatch(checkingFinish());
+      } else {
+         console.log('No hay token');
       }
-      dispatch(checkingFinish());
+
    }
 }
 
@@ -93,6 +96,13 @@ export const login = (_id, name, lastName, email, city, address, phone, role, to
       token
    }
 })
+
+export const logoutUser = () => {
+   return async (dispatch) => {
+      localStorage.removeItem('token');
+      dispatch(logout());
+   }
+}
 
 export const logout = () => ({
    type: types.logout

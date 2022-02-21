@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../../actions/auth';
 
 export const Nabvar = () => {
 
-   /* const navigate = useNavigate(); */
+   const navigate = useNavigate();
 
-   const { role } = useSelector(state => state.auth);
+   const { role, checking } = useSelector(state => state.auth);
+   const dispatch = useDispatch();
 
    const [isOpen, setIsOpen] = useState(false);
 
    const open = () => setIsOpen(!isOpen);
 
-   /*     const handleLogout = () => {
-            navigate('/login', {
-               replace: true
-            })
-       } */
+   const handleLogout = () => {
+      //Todo: validatte with checking
+      dispatch(logoutUser());
+      navigate('/login', { replace: true });
+   }
 
    return (
       <>
@@ -35,7 +37,9 @@ export const Nabvar = () => {
                {role === 'ADMIN' && <MenuLink to='/productos' onClick={open}>Productos</MenuLink>}
                <MenuLink to='/promociones' onClick={open}>Promociones</MenuLink>
                <MenuLink to='/compra' onClick={open}>🛒</MenuLink>
-               <MenuLink to='/login' >Login</MenuLink>
+
+               <MenuLink to='/login' onClick={handleLogout}>{checking ? "Logout": "Login"}</MenuLink>
+
             </Menu>
          </Nav>
       </>

@@ -61,18 +61,23 @@ export const startRegister = (name, lastName, password, email, city, address, ph
 export const startChecking = () => {
    return async (dispatch) => {
       const token = localStorage.getItem('token') || '';
-      const data = await fetch('https://miscelanea-api.herokuapp.com/api/user/token/renew', {
-         headers: {
-            'x-token': token
+
+      if (token) {
+         const data = await fetch('https://miscelanea-api.herokuapp.com/api/user/token/renew', {
+            headers: {
+               'x-token': token
+            }
+         });
+         const response = await data.json();
+         if (response.success === true) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            const { user } = response;
+            dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, response.token));
+            dispatch(checkingFinish());
+         } else {
+            console.log('No hay token');
          }
-      });
-      const response = await data.json();
-      if (response.success === true) {
-         localStorage.setItem('token', response.token);
-         localStorage.setItem('token-init-date', new Date().getTime());
-         const { user } = response;
-         dispatch(login(user._id, user.name, user.lastName, user.email, user.city, user.address, user.phone, user.role, response.token));
-         dispatch(checkingFinish());
       } else {
          console.log('No hay token');
       }

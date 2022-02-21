@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
 
 import { useForm } from '../../../hooks/useForm';
 import { InputProduct } from './InputProduct';
@@ -35,6 +36,13 @@ export const ProductModalUpdate = ({ code, modal, nameProduct: name, category: t
          .then(response => response.json())
          .then(data => {
             console.log(data);
+            Swal.fire({
+               title: 'Producto Actualizado',
+               text: 'El producto se ha actualizado correctamente',
+               icon: 'success',
+               confirmButtonText: 'Ok'
+            })
+            modal(false);
          })
          .catch(err => console.error(err))
    }

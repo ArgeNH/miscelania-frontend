@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+
 import { useForm } from '../../../hooks/useForm';
 
 import { InputProduct } from './InputProduct';
@@ -38,7 +40,21 @@ export const ProductAdd = () => {
          .then(response => response.json())
          .then(data => {
             console.log(data);
-            //falta swal
+            if (data.success) {
+               Swal.fire({
+                  title: 'Producto Agregado',
+                  text: 'El producto se ha agregado correctamente',
+                  icon: 'success',
+                  confirmButtonText: 'Ok'
+               })
+            } else {
+               Swal.fire({
+                  title: 'Error',
+                  text: data.error,
+                  icon: 'error',
+                  confirmButtonText: 'Ok'
+               })
+            }
          })
          .catch(err => console.log(err));
    }

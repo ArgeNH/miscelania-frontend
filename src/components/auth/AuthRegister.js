@@ -7,10 +7,13 @@ import { startRegister } from '../../actions/auth';
 import { removeError, setError } from '../../actions/ui';
 
 import { useForm } from '../../hooks/useForm';
+import { useTitle } from '../../hooks/useTitle';
 import { Error } from '../alerts/Error';
 import { InputRegister } from './InputRegister';
 
 export const AuthRegister = () => {
+
+   useTitle('Register');
 
    const navigate = useNavigate();
    const dispatch = useDispatch();

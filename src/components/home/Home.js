@@ -3,8 +3,12 @@ import React from 'react';
 import { CardProduct } from './CardProduct';
 import { info } from '../../data/infoProduct';
 import { Information } from './Information';
+import { useTitle } from '../../hooks/useTitle';
 
 export const Home = () => {
+
+   useTitle('Miscelanea Rodriguez');
+
     return (
         <>
             <section className='bg-gray-100 mt-20'>

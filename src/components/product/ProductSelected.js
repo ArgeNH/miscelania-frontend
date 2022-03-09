@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
+
+import { setProduct } from '../../actions/cart';
 import { setFormatPrice } from '../../helpers/setFormatPrice';
 import { fetcher } from '../../utils/fetcher';
 
 export const ProductSelected = () => {
+
+   const dispatch = useDispatch();
 
    const [counter, setCounter] = useState(1);
    const [isMin, setIsMin] = useState(false);
@@ -24,6 +29,7 @@ export const ProductSelected = () => {
 
    const handleCart = () => {
       console.log(counter);
+      dispatch(setProduct(code, nameProduct, price, cant, category, url, counter));
    }
 
    return (

@@ -7,5 +7,9 @@ export const types = {
    uiRemoveError: '[UI] Remove Error',
 
    uiStartLoading: '[UI] Start Loading',
-   uiFinishLoading: '[UI] Finish loading'
+   uiFinishLoading: '[UI] Finish loading',
+
+   cartSetProduct: '[CART] Set New Product',
+   cartRemoveProduct: '[CART] Remove Products',
+   cartSetEmpty: '[CART] Set cart Empty',
 }

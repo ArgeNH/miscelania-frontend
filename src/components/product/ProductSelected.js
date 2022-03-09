@@ -24,12 +24,13 @@ export const ProductSelected = () => {
    const { code, nameProduct, price, cant, category, url } = data.product[0];
 
    const formatPrice = setFormatPrice(price);
+   const total = counter * price;
 
    console.log(code, nameProduct, price, cant, category, url, name);
 
    const handleCart = () => {
       console.log(counter);
-      dispatch(setProduct(code, nameProduct, price, cant, category, url, counter));
+      dispatch(setProduct(code, nameProduct, total, cant, category, url, counter));
    }
 
    return (

@@ -10,13 +10,19 @@ export const cartReducer = (state = initialState, action) => {
          console.log(action.payload);
          return {
             ...state,
-            products: [...state.products, action.payload]
+            products: [
+               ...state.products,
+               action.payload
+            ]
          }
 
       case types.cartRemoveProduct:
          return {
             ...state,
-            products: [...state.products, state.products.filter(product => product.code != action.payload.code)]
+            products: [
+               ...state.products,
+               state.products.filter(product => product.code != action.payload.code)
+            ]
          }
 
       case types.cartSetEmpty:
@@ -25,6 +31,6 @@ export const cartReducer = (state = initialState, action) => {
          }
 
       default:
-         return state
+         return state;
    }
 }

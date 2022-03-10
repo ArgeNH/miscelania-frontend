@@ -7,7 +7,9 @@ export const ShoppingScreen = () => {
    const { products } = useSelector(state => state.cart);
 
    if (products.length == 0) {
-      return <div className='mt-20'>carrito vacio</div>
+      return <div className='mt-20'>
+         <h2 className="text-xl font-semibold">Carrito vacio</h2>
+      </div>
    }
 
    return (

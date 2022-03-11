@@ -6,39 +6,61 @@ export const ShoppingScreen = () => {
 
    const { products } = useSelector(state => state.cart);
 
-   if (products.length == 0) {
-      return <div className='mt-20'>
-         <h2 className="text-xl font-semibold">Carrito vacio</h2>
-      </div>
-   }
-
    return (
-      <div className='mt-20'>
-         <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-coolGray-900 dark:text-coolGray-100">
-            <h2 className="text-xl font-semibold">Tu carrito</h2>
-            <ul className="flex flex-col divide-y divide-coolGray-700">
+      <section>
+         <div clasNames="relative mx-auto max-w-screen-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+               <div className="py-12 bg-gray-50 md:py-24">
+                  <div className="max-w-lg px-4 mx-auto lg:px-8">
+                     <div className="flex items-center">
 
-               {
-                  products.map(product => (
-                     <ItemCart key={product.code} {...product} />
-                  ))
-               }
+                        <h2 className="font-medium text-xl">{products.length !== 0 ?'Tu Carrito': ''}</h2>
+                     </div>
 
-            </ul>
-            <div className="space-y-1 text-right">
-               <p>Cantidad a pagar:
-                  <span className="font-semibold"> 357 €</span>
-               </p>
-            </div>
-            <div className="flex justify-end space-x-4">
-               <button type="button" className="px-6 py-2 border rounded-md dark:border-violet-400">
-                  Volver
-               </button>
-               <button type="button" className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-coolGray-900 dark:border-violet-400">
-                  Pagar
-               </button>
+                     {
+                        products.length !== 0 ?
+                           (<>
+                              <div className="mt-8">
+                                 <p className="text-2xl font-medium tracking-tight">$99.99</p>
+                                 <p className="mt-1 text-sm text-gray-500">For the purchase of</p>
+                              </div>
+
+                              <div className="mt-12">
+                                 <div className="flow-root">
+                                    <ul className="-my-4 divide-y divide-gray-200">
+
+                                       {
+                                          products.map(product => (
+                                             <ItemCart key={product.code} {...product} />
+                                          ))
+                                       }
+
+                                    </ul>
+                                 </div>
+                              </div>
+                           </>)
+                           :
+                           (
+                              <div className='mt-20'>
+                                 <h2 className="text-xl font-semibold">Carrito vacio</h2>
+                              </div>
+                           )
+                     }
+                  </div>
+               </div>
+
+               <div className="py-12 bg-white md:py-24">
+                  <div className="max-w-lg px-4 mx-auto lg:px-8">
+
+                     <div className="flex items-center">
+
+                        <h2 className="ml-4 font-medium">Pagar con PayPal</h2>
+                     </div>
+
+                  </div>
+               </div>
             </div>
          </div>
-      </div>
+      </section>
    )
 }

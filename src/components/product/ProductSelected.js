@@ -34,7 +34,7 @@ export const ProductSelected = () => {
    }
 
    return (
-      <div className="container mx-auto px-6 mt-20 pt-20">
+      <div className="container mx-auto px-6 mt-20 mb-20 pt-20">
          <div className="md:flex md:items-center">
             <div className="w-full h-64 md:w-1/2 lg:h-96">
                <img className="h-full w-full rounded-md object-cover max-w-lg mx-auto" src={url} alt={nameProduct} />

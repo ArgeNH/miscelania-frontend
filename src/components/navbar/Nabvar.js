@@ -38,7 +38,7 @@ export const Nabvar = () => {
                <MenuLink to='/promociones' onClick={open}>Promociones</MenuLink>
                <MenuLink to='/compra' onClick={open}>🛒</MenuLink>
 
-               <MenuLink to='/login' onClick={handleLogout}>{checking ? "Logout": "Login"}</MenuLink>
+               <MenuLink to='/login' onClick={handleLogout}>{checking ? "Logout" : "Login"}</MenuLink>
 
             </Menu>
          </Nav>

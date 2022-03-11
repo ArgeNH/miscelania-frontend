@@ -30,7 +30,7 @@ export const ProductSelected = () => {
 
    const handleCart = () => {
       console.log(counter);
-      dispatch(addNewProduct(code, nameProduct, total, cant, category, url, counter));
+      dispatch(addNewProduct(code, nameProduct, total, cant, category, url, counter, price));
    }
 
    return (

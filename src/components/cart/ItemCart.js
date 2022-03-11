@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { setFormatPrice } from '../../helpers/setFormatPrice';
 import { capitalize } from '../../helpers/capitalize';
 
-export const ItemCart = ({ nameProduct, price, category, url, counter }) => {
+export const ItemCart = ({ nameProduct, total, category, url, counter }) => {
 
-   const format = setFormatPrice(price);
+   const format = setFormatPrice(total);
    const categoryCap =  capitalize(category);
 
    return (
@@ -48,7 +48,7 @@ export const ItemCart = ({ nameProduct, price, category, url, counter }) => {
 }
 ItemCart.propTypes = {
    nameProduct: PropTypes.string,
-   price: PropTypes.number,
+   total: PropTypes.number,
    category: PropTypes.string,
    counter: PropTypes.number,
    url: PropTypes.string

@@ -9,6 +9,7 @@ export const Nabvar = () => {
    const navigate = useNavigate();
 
    const { role, checking } = useSelector(state => state.auth);
+   const { products } = useSelector(state => state.cart);
    const dispatch = useDispatch();
 
    const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,17 @@ export const Nabvar = () => {
                <MenuLink to='/' onClick={open}>Inicio</MenuLink>
                {role === 'ADMIN' && <MenuLink to='/productos' onClick={open}>Productos</MenuLink>}
                <MenuLink to='/promociones' onClick={open}>Promociones</MenuLink>
-               <MenuLink to='/compra' onClick={open}>🛒</MenuLink>
+
+               <MenuLink to='/compra' onClick={open}>
+                  🛒
+                  {
+                     products.length !== 0 ?
+                        <span className="inline-block py-1 px-1.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded ml-2">
+                           {products.length}
+                        </span> :
+                        ''
+                  }
+               </MenuLink>
 
                <MenuLink to='/login' onClick={handleLogout}>{checking ? "Logout" : "Login"}</MenuLink>
 
@@ -51,9 +62,9 @@ const MenuLink = styled(Link)`
       cursor: pointer;
       text-align: center;
       text-decoration: none;
-      color: #67bc98;
+      color: #0d9488;
       transition: all 0.3s ease-in;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bolder;
 `;
 
@@ -74,7 +85,7 @@ const Nav = styled.div`
 
 const Logo = styled(Link)`
       padding: 1rem 0;
-      color: #7b7fda;
+      color: #0891b2;
       text-decoration: none;
       font-weight: 800;
       font-size: 1.9rem;
@@ -105,7 +116,7 @@ const Hamburger = styled.div`
       span {
          height: 2px;
          width: 25px;
-         background: #7b7fda;
+         background: #0891b2;
          margin-bottom: 4px;
          border-radius: 5px;
       }

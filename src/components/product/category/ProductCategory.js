@@ -19,7 +19,7 @@ export const ProductCategory = ({ nameCategory }) => {
 
    return (
       <div>
-         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 bg-slate-50">
             <h2 className="text-2xl font-extrabold tracking-tight text-gray-700">{nameCategory} ({product?.length})</h2>
 
             <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

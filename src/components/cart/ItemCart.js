@@ -13,27 +13,27 @@ export const ItemCart = ({ nameProduct, total, category, url, counter, price }) 
       <li className="flex items-center justify-between py-4">
          <div className="flex items-start">
             <img
-               className="flex-shrink-0 object-cover w-16 h-16 rounded-lg"
+               className="flex-shrink-0 object-cover w-32 h-32 rounded-lg"
                src={url}
                alt={nameProduct}
             />
 
             <div className="ml-4">
-               <p className="text-sm">{nameProduct}</p>
+               <p className="text-base">{nameProduct}</p>
 
-               <dl className="mt-1 space-y-1 text-xs text-gray-500">
+               <dl className="mt-1 space-y-1 text-base text-gray-500">
                   <div>
                      <dt className="inline">Categoria:</dt>
-                     <dd className="inline">{categoryCap}</dd>
+                     <dd className="inline"> {categoryCap}</dd>
                   </div>
 
                   <div>
                      <dt className="inline">Precio unitatrio:</dt>
-                     <dd className="inline">{formatPrice}</dd>
+                     <dd className="inline"> {formatPrice}</dd>
                   </div>
                   <div>
                      <dt className="inline">Cantidad:</dt>
-                     <dd className="inline">{counter}</dd>
+                     <dd className="inline"> {counter}</dd>
                   </div>
                   
                </dl>
@@ -41,7 +41,7 @@ export const ItemCart = ({ nameProduct, total, category, url, counter, price }) 
          </div>
 
          <div>
-            <p className="text-sm">
+            <p className="text-lg font-semibold">
                {format}
             </p>
          </div>

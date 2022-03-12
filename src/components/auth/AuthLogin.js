@@ -53,70 +53,75 @@ export const AuthLogin = () => {
 
    return (
       <>
-         <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-800 rounded-lg shadow-md dark:bg-white mt-20">
-            <div className="px-6 py-4">
-               <h2 className="text-3xl font-bold text-center text-white dark:text-gray-700">Miscelánea Rodríguez</h2>
 
-               <h3 className="mt-1 text-xl font-medium text-center text-gray-200 dark:text-gray-600">Bienvenido de vuelta</h3>
+         <div className="font-sans">
+            <div className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-indigo-600">
+               <div className="relative mt-20">
+                  <div className="card bg-indigo-700 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
+                  <div className="card bg-indigo-300 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
+                  <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
+                     <h1 className="text-center text-2xl font-semibold text-gray-600">Miscelánea Rodríguez 🛒</h1>
+                     <form className="mt-5">
 
-               <p className="mt-1 text-center text-gray-400 dark:text-gray-500">Ingreso a nuestra tienda</p>
+                        <div>
+                           <label className="block mb-1 text-gray-600 font-semibold">Correo</label>
+                           <input
+                              className="bg-indigo-100 px-4 py-2 outline-none rounded-md w-full mb-1"
+                              name='email'
+                              type="email"
+                              placeholder="ej. John@gmail.com"
+                              aria-label="Email Address"
+                              value={email}
+                              onChange={handleInputChange} />
+                        </div>
+                        <div>
+                           <label className="block mb-1 text-gray-600 font-semibold">Contraseña</label>
+                           <input
+                              className="bg-indigo-100 px-4 py-2 outline-none rounded-md w-full"
+                              name='password'
+                              type="password"
+                              placeholder="Password"
+                              aria-label="Password"
+                              value={password}
+                              onChange={handleInputChange}
+                           />
+                        </div>
 
-               <form>
-                  <div className="w-full mt-4">
-                     <input
-                        className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
-                        name='email'
-                        type="email"
-                        placeholder="ej. John@gmail.com"
-                        aria-label="Email Address"
-                        value={email}
-                        onChange={handleInputChange}
-                     />
+                        <div className="mt-7">
+                           <button
+                              className="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105"
+                              type='onsubmit'
+                              onClick={handleSubmit}
+                           >
+                              Iniciar Sesión
+                           </button>
+                        </div>
+
+                        <div className="flex items-center text-center">
+                           <div className="mt-2">
+                              <div className="flex justify-center items-center">
+                                 <label className="mr-2" >¿Eres nuevo?</label>
+                                 <a
+                                    className=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105 cursor-pointer"
+                                    onClick={handleRegister}
+                                 >
+                                    Crea una cuenta
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                     {
+                        msgError &&
+                        (
+                           <Error name={nameError} desc={msgError} />
+                        )
+                     }
                   </div>
+               </div>
 
-                  <div className="w-full mt-4">
-                     <input
-                        className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
-                        name='password'
-                        type="password"
-                        placeholder="Password"
-                        aria-label="Password"
-                        value={password}
-                        onChange={handleInputChange}
-                     />
-                  </div>
-
-                  <div className="flex items-center justify-end mt-4">
-                     <button
-                        className="px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none"
-                        type="onSubmit"
-                        onClick={handleSubmit}
-                     >
-                        Iniciar Sesión
-                     </button>
-                  </div>
-               </form>
-            </div>
-
-            <div className="flex items-center justify-center py-4 text-center bg-gray-700 dark:bg-gray-50">
-               <span className="text-sm text-gray-200 dark:text-gray-600">¿No tienes una cuenta? </span>
-
-               <a
-                  className="mx-2 text-sm font-bold text-blue-400 dark:text-blue-500 hover:underline cursor-pointer"
-                  onClick={handleRegister}
-               >
-                  Registrarse
-               </a>
             </div>
          </div>
-
-         {
-            msgError &&
-            (
-               <Error name={nameError} desc={msgError} />
-            )
-         }
       </>
-
    )
 }

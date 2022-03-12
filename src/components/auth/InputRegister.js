@@ -7,7 +7,7 @@ export const InputRegister = ({ label, name, type, place, value, handle }) => {
 
     return (
         <div>
-            <label className="text-gray-200 dark:text-gray-700">{label}</label>
+            <label className="text-gray-600">{label}</label>
             <input
                 name={name}
                 type={type}

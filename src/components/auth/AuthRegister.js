@@ -76,9 +76,9 @@ export const AuthRegister = () => {
    }
 
    return (
-      <>
-         <section className="max-w-4xl p-6 mx-auto bg-gray-800 rounded-lg shadow-xl shadow-gray-900 backdrop-blur-sm dark:bg-gray-800 mt-20">
-            <h2 className="text-3xl font-bold text-center text-gray-200 dark:text-white">Registro de clientes</h2>
+      <div className='h-[100vh] bg-gradient-to-br from-blue-300 to-indigo-600 flex justify-center items-center w-[100vw]'>
+         <section className=" p-5 mx-auto bg-white rounded-lg backdrop-blur-sm">
+            <h2 className="text-center text-2xl font-semibold text-gray-600">Registro de clientes 🙍🏻‍♀️🙍🏻‍♂️</h2>
             <form>
                <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
 
@@ -153,33 +153,33 @@ export const AuthRegister = () => {
                      value={phone}
                      handle={handleInputChange}
                   />
+
                </div>
                <div className="flex justify-end mt-6">
                   <button
-                     className=" basis-1 px-8 text-lg py-4 leading-5 text-gray-200 transition-colors duration-200 transform bg-gray-900 rounded-md  hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                     className="mb-2 w-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-indigo-100 py-2 rounded-md text-lg tracking-wide"
                      onClick={handleSubmit}
                      type='submit'
                   >
                      Registrarse
                   </button>
                </div>
-               <div className='justify-end mt-6'>
-                  <a
-                     className="basis-1 text-lg text-gray-200 cursor-pointer hover:text-gray-400 underline"
-                     onClick={handleLogin}
-                  >
-                     Ya estoy registrado
-                  </a>
-               </div>
-            </form>
-         </section>
 
-         {
-            msgError &&
-            (
-               <Error name={nameError} desc={msgError} />
-            )
-         }
-      </>
+               <a
+                  className="text-md font-bold text-blue-400 dark:text-blue-500 hover:underline cursor-pointer"
+                  onClick={handleLogin}
+               >
+                  Ya estoy registrado
+               </a>
+
+            </form>
+            {
+               msgError &&
+               (
+                  <Error name={nameError} desc={msgError} />
+               )
+            }
+         </section>
+      </div>
    )
 }

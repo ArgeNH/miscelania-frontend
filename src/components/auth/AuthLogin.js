@@ -57,8 +57,8 @@ export const AuthLogin = () => {
          <div className="font-sans">
             <div className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-300 to-indigo-600">
                <div className="relative mt-20">
-                  <div className="card bg-indigo-700 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
-                  <div className="card bg-indigo-300 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
+                  <div className="card bg-indigo-700 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6 shadow-xl"></div>
+                  <div className="card bg-indigo-300 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6 shadow-xl"></div>
                   <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
                      <h1 className="text-center text-2xl font-semibold text-gray-600">Miscelánea Rodríguez 🛒</h1>
                      <form className="mt-5">

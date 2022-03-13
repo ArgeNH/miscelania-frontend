@@ -27,7 +27,7 @@ export const cartReducer = (state = initialState, action) => {
 
       case types.cartSetEmpty:
          return {
-            initialState
+            products: []
          }
 
       default:

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
+import Swal from 'sweetalert2';
 
 import { addNewProduct } from '../../actions/cart';
 import { setFormatPrice } from '../../helpers/setFormatPrice';
@@ -26,10 +27,14 @@ export const ProductSelected = () => {
    const formatPrice = setFormatPrice(price);
    const total = counter * price;
 
-   console.log(code, nameProduct, price, cant, category, url, name);
-
    const handleCart = () => {
-      console.log(counter);
+      Swal.fire({
+         position: 'center',
+         icon: 'success',
+         title: `${name} se ha añadido al carrito ${counter} de este producto`,
+         showConfirmButton: false,
+         timer: 2000
+      })
       dispatch(addNewProduct(code, nameProduct, total, cant, category, url, counter, price));
    }
 

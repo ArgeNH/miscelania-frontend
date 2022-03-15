@@ -78,7 +78,7 @@ export const ShoppingScreen = () => {
 
                                  <ButtonCart
                                     name={'Ir a comprar productos'}
-                                    color={'teal'}
+                                    color={'emerald'}
                                     action={handlePage}
                                  />
 

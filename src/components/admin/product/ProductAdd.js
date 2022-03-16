@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import { useForm } from '../../../hooks/useForm';
@@ -8,6 +9,7 @@ import { InputProduct } from './InputProduct';
 export const ProductAdd = () => {
 
    const [image, setImage] = useState({});
+   const navigate = useNavigate();
 
    const [formValues, handleInputChange] = useForm({
       code: '',
@@ -42,11 +44,13 @@ export const ProductAdd = () => {
          .then(data => {
             if (data.success) {
                Swal.fire({
-                  title: 'Producto Agregado',
-                  text: 'El producto se ha agregado correctamente',
+                  position: 'center',
                   icon: 'success',
-                  confirmButtonText: 'Ok'
+                  title: `El producto se ha agregado correctamente`,
+                  showConfirmButton: false,
+                  timer: 2000
                })
+               navigate(-1);
             } else {
                Swal.fire({
                   title: 'Error',

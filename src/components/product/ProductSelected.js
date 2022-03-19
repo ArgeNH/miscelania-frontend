@@ -31,7 +31,7 @@ export const ProductSelected = () => {
       Swal.fire({
          position: 'center',
          icon: 'success',
-         title: `${name} se ha añadido al carrito ${counter} de este producto`,
+         title: `${name}x${counter} se ha añadido al carrito`,
          showConfirmButton: false,
          timer: 2000
       })

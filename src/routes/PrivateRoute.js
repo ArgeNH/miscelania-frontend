@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navigate, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate, useLocation, Outlet } from 'react-router-dom';
 
-export const PrivateRoute = ({ children }) => {
+export const PrivateRoute = ({ checking }) => {
 
-   const { checking } = useSelector(state => state.auth);
-
-   const { pathname} = useLocation();
-   localStorage.setItem('lastPath', pathname );
+   const location = useLocation();
+   localStorage.setItem('lastPath', location.pathname);
 
    return checking
-      ? children
-      : <Navigate to='/login' />;
+      ? <Outlet />
+      : <Navigate to={`/login`} state={{ from: location }} />;
 };
 
 PrivateRoute.propTypes = {
-   children: PropTypes.object.isRequired
+   checking: PropTypes.bool
 };

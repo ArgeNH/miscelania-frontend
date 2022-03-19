@@ -36,11 +36,7 @@ export const AuthLogin = () => {
       e.preventDefault();
       if (isValid()) {
          dispatch(startLoginWithEmailAndPassword(email, password));
-         const lastPath = localStorage.getItem('lastPath') || '';
-
-         navigate(lastPath, {
-            replace: true
-         });
+         localStorage.setItem('auth', true);
       }
    }
 

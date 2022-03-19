@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { startChecking } from '../actions/auth';
 
@@ -12,19 +12,25 @@ import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
 
    const dispatch = useDispatch();
+   const { _id } = useSelector(state => state.auth);
 
    useEffect(() => {
-      dispatch(startChecking());
+         dispatch(startChecking());
    }, [dispatch]);
 
    return (
       <BrowserRouter>
          <Routes>
 
-            <Route
+            <Route path='/*' element={<PublicRoute checking={!!_id} />}>
+               <Route path='login' element={<AuthLogin />} />
+               <Route path='register' element={<AuthRegister />} />
+            </Route>
+
+            {/* <Route
                path='/login'
                element={
-                  <PublicRoute>
+                  <PublicRoute checking={!!_id}>
                      <AuthLogin />
                   </PublicRoute>
                }
@@ -33,19 +39,23 @@ export const AppRouter = () => {
             <Route
                path='/register'
                element={
-                  <PublicRoute>
+                  <PublicRoute checking={!!_id}>
                      <AuthRegister />
                   </PublicRoute>
                }
-            />
+            /> */}
 
-            <Route path='/*'
+            <Route path='/*' element={<PrivateRoute checking={!!_id} />}>
+               <Route path='*' element={<DashboardRoutes />} />
+            </Route>
+
+            {/* <Route path='/*'
                element={
-                  <PrivateRoute >
+                  <PrivateRoute checking={!!_id}>
                      <DashboardRoutes />
                   </PrivateRoute>
                }
-            />
+            /> */}
          </Routes>
       </BrowserRouter>
    )

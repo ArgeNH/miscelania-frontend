@@ -5,12 +5,15 @@ import Swal from 'sweetalert2';
 
 import { setCartEmpty } from '../../actions/cart';
 import { setFormatPrice } from '../../helpers/setFormatPrice';
+import { Error404 } from '../alerts/Error404';
 import { ButtonCart } from './ButtonCart';
 import { ItemCart } from './ItemCart';
 
 export const ShoppingScreen = () => {
 
    const { products } = useSelector(state => state.cart);
+   const { _id } = useSelector(state => state.auth);
+
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
@@ -51,6 +54,15 @@ export const ShoppingScreen = () => {
 
          })
          .catch(err => console.log('lol', err));
+   }
+
+   if (!_id) {
+      return (
+         <Error404
+            name={'Iniciar sesión'}
+            desc={'Porfavor inicie sesion para poder ver el carrito de compra 😄'}
+         />
+      )
    }
 
    return (

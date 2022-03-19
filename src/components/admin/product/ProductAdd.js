@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import { useForm } from '../../../hooks/useForm';
@@ -9,7 +8,6 @@ import { InputProduct } from './InputProduct';
 export const ProductAdd = () => {
 
    const [image, setImage] = useState({});
-   const navigate = useNavigate();
 
    const [formValues, handleInputChange] = useForm({
       code: '',
@@ -50,7 +48,11 @@ export const ProductAdd = () => {
                   showConfirmButton: false,
                   timer: 2000
                })
-               navigate(-1);
+
+               setTimeout(() => {
+                  window.location.reload();
+               }, 2000);
+               
             } else {
                Swal.fire({
                   title: 'Error',

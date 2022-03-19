@@ -45,6 +45,7 @@ export const AuthRegister = () => {
       e.preventDefault();
       if (isValid()) {
          dispatch(startRegister(name, lastName, password, email, city, address, phone));
+         localStorage.setItem('auth', true);
       }
    }
 

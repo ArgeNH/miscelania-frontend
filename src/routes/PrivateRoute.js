@@ -4,12 +4,12 @@ import { Navigate, useLocation, Outlet } from 'react-router-dom';
 
 export const PrivateRoute = ({ checking }) => {
 
-   const { pathname } = useLocation();
-   localStorage.setItem('lastPath', pathname);
+   const location = useLocation();
+   localStorage.setItem('lastPath', location.pathname);
 
    return checking
       ? <Outlet />
-      : <Navigate to={`${localStorage.getItem('lastPath')}`} />;
+      : <Navigate to={`/login`} state={{ from: location }} />;
 };
 
 PrivateRoute.propTypes = {

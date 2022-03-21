@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { ProductAdd } from '../admin/product/ProductAdd';
-import { TableProduct } from '../admin/product/TableProduct';
+//import { TableProduct } from '../admin/product/TableProduct';
+import { TableProductsFilter } from '../admin/product/TableProductsFilter';
 
 export const ProductScreen = () => {
    return (
@@ -13,7 +14,8 @@ export const ProductScreen = () => {
 
             <ProductAdd />
 
-            <TableProduct />
+            {/* <TableProduct /> */}
+            <TableProductsFilter />
 
          </div>
       </section>

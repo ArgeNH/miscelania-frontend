@@ -1,20 +1,35 @@
 import React from 'react';
 import useSWR from 'swr';
+import { getProductByCategory } from '../../../helpers/getProductByCategory';
+import { useForm } from '../../../hooks/useForm';
 
 import { fetcher } from '../../../utils/fetcher';
+import { Skeleton } from '../../product/category/Skeleton';
 import { DataProduct } from './DataProduct';
 
 export const TableProductsFilter = () => {
 
+   const [formValues, handleInputChange] = useForm({
+      category: ''
+   });
+
+   /*  const [formValueSearch, handleInputChangeSearch] = useForm({
+       search: ''
+    });
+ 
+    const { search } = formValueSearch;
+    console.log(search); */
+
+   const { category } = formValues;
+   console.log(category);
+
    const url = 'https://miscelanea-api.herokuapp.com/api/product';
 
    const { data } = useSWR(url, fetcher);
-   let products = data?.products;
 
-   if (!data) {
-      return <div>Cargando...</div>
-   }
+   const product = getProductByCategory(category, data?.products);
 
+   if (!data) return <Skeleton />
 
    return (
       <>
@@ -27,8 +42,13 @@ export const TableProductsFilter = () => {
                   <div className="flex flex-row mb-1 sm:mb-0">
                      <div className="relative">
                         <select
-                           className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                           <option defaultValue value="PAPELERIA">Papeleria</option>
+                           className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                           name="category"
+                           value={category}
+                           onChange={handleInputChange}
+                        >
+                           <option defaultValue>Seleccione la categoria... </option>
+                           <option value="PAPELERIA">Papeleria</option>
                            <option value="FARMACIA">Farmacia</option>
                            <option value="ASEO">Aseo</option>
                            <option value="HOGAR">Hogar</option>
@@ -44,7 +64,7 @@ export const TableProductsFilter = () => {
                         </div>
                      </div>
                   </div>
-                  <div className="block relative">
+                  {/* <div className="block relative ml-2">
                      <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                         <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current text-gray-500">
                            <path
@@ -53,8 +73,12 @@ export const TableProductsFilter = () => {
                         </svg>
                      </span>
                      <input placeholder="Search"
-                        className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
-                  </div>
+                        className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                        name='search'
+                        value={search}
+                        onChange={handleInputChangeSearch}
+                     />
+                  </div> */}
                </div>
                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                   <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -90,7 +114,7 @@ export const TableProductsFilter = () => {
                         <tbody>
 
                            {
-                              products?.map(product => (
+                              product?.map(product => (
                                  <DataProduct key={product._id} {...product} />
                               ))
                            }

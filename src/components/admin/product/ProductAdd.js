@@ -9,7 +9,7 @@ export const ProductAdd = () => {
 
    const [image, setImage] = useState({});
 
-   const [formValues, handleInputChange] = useForm({
+   const [formValues, handleInputChange, reset] = useForm({
       code: '',
       nameProduct: '',
       price: '',
@@ -48,11 +48,7 @@ export const ProductAdd = () => {
                   showConfirmButton: false,
                   timer: 2000
                })
-
-               setTimeout(() => {
-                  window.location.reload();
-               }, 2000);
-               
+               reset();
             } else {
                Swal.fire({
                   title: 'Error',

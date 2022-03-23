@@ -8,7 +8,7 @@ export const Nabvar = () => {
 
    const navigate = useNavigate();
 
-   const { role, checking } = useSelector(state => state.auth);
+   const { role, checking, name, lastName } = useSelector(state => state.auth);
    const { products } = useSelector(state => state.cart);
    const dispatch = useDispatch();
 
@@ -36,7 +36,6 @@ export const Nabvar = () => {
             <Menu isOpen={isOpen}>
                <MenuLink to='/' onClick={open}>Inicio</MenuLink>
                {role === 'ADMIN' && <MenuLink to='/productos' onClick={open}>Productos</MenuLink>}
-               <MenuLink to='/promociones' onClick={open}>Promociones</MenuLink>
 
                <MenuLink to='/compra' onClick={open}>
                   🛒
@@ -49,8 +48,8 @@ export const Nabvar = () => {
                   }
                </MenuLink>
 
-               <MenuLink to='/login' onClick={handleLogout}>{checking ? "Logout" : "Login"}</MenuLink>
-
+               <MenuLink to='/login' onClick={handleLogout}>{checking ? "Salir" : "Iniciar Sesión"}</MenuLink>
+               <NameUser to='/' >{name !== undefined ? `${name} ${lastName}` : 'Cliente'}</NameUser>
             </Menu>
          </Nav>
       </>
@@ -66,6 +65,16 @@ const MenuLink = styled(Link)`
       transition: all 0.3s ease-in;
       font-size: 1.3rem;
       font-weight: bolder;
+`;
+
+const NameUser = styled.h1`
+      padding: 1rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      color: #0891b2;
+      transition: all 0.3s ease-in;
+      font-size: 1.3rem;
+      text-decoration: underline;
 `;
 
 const Nav = styled.div`

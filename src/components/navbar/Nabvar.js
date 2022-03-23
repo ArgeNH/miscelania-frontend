@@ -49,12 +49,17 @@ export const Nabvar = () => {
                </MenuLink>
 
                <MenuLink to='/login' onClick={handleLogout}>{checking ? "Salir" : "Iniciar Sesión"}</MenuLink>
-               <NameUser to='/' >{name !== undefined ? `${name} ${lastName}` : 'Cliente'}</NameUser>
+               <Separator>|</Separator>
+               <NameUser to='/' >Bienvenido <span>{name !== undefined ? ` ${name} ${lastName}` : 'Cliente'}</span></NameUser>
             </Menu>
          </Nav>
       </>
    )
 }
+
+const Separator = styled.p`
+      color: #0d9488;
+`;
 
 const MenuLink = styled(Link)`
       padding: 1rem 2rem;
@@ -74,7 +79,11 @@ const NameUser = styled.h1`
       color: #0891b2;
       transition: all 0.3s ease-in;
       font-size: 1.3rem;
-      text-decoration: underline;
+      font-weight: bolder;
+      span {
+         font-weight: 300;
+         font-size: 1.3rem;
+      }
 `;
 
 const Nav = styled.div`

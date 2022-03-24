@@ -157,8 +157,7 @@ export const ShoppingScreen = () => {
                      <ButtonCart
                         size={products.length}
                         name={'Proximamente...'}
-                        color={'indigo'}
-                        action={handlePurchase}
+                        color={'blue'}
                      />
 
                      <hr />

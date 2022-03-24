@@ -4,7 +4,9 @@ import { Error404 } from '../components/alerts/Error404';
 
 import { ShoppingScreen } from '../components/cart/ShoppingScreen';
 import { Footer } from '../components/footer/Footer';
+import { Cancel } from '../components/home/Cancel';
 import { Home } from '../components/home/Home';
+import { Success } from '../components/home/Success';
 import { Nabvar } from '../components/navbar/Nabvar';
 import { Cleanliness } from '../components/product/category/Cleanliness';
 import { IronStore } from '../components/product/category/IronStore';
@@ -35,6 +37,8 @@ export const DashboardRoutes = () => {
                <Route path='productos/:code/:name' element={<ProductSelected />} />
                <Route path='productos' element={<ProductScreen />} />
                <Route path='compra' element={<ShoppingScreen />} />
+               <Route path='gracias' element={<Success />} />
+               <Route path='cancelado' element={<Cancel />} />
 
                <Route path='*' element={<Navigate to='/404' />} />
             </Routes>

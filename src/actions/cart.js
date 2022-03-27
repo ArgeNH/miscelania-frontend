@@ -1,6 +1,6 @@
 import { types } from '../types/types';
 
-export const addNewProduct = (code, nameProduct, total, cant, category, url, counter, price) => {
+export const addNewProduct = (_id, code, nameProduct, total, cant, category, url, counter, price) => {
    return (dispatch, getState) => {
       const { products } = getState().cart;
 
@@ -14,14 +14,15 @@ export const addNewProduct = (code, nameProduct, total, cant, category, url, cou
             }
          })
       } else {
-         dispatch(setProduct(code, nameProduct, total, cant, category, url, counter, price));
+         dispatch(setProduct(_id, code, nameProduct, total, cant, category, url, counter, price));
       }
    }
 }
 
-export const setProduct = (code, nameProduct, total, cant, category, url, counter, price) => ({
+export const setProduct = (_id, code, nameProduct, total, cant, category, url, counter, price) => ({
    type: types.cartSetProduct,
    payload: {
+      _id,
       code,
       nameProduct,
       total,

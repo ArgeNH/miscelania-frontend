@@ -15,8 +15,6 @@ export const AppRouter = () => {
    const dispatch = useDispatch();
    //const { _id: id } = useSelector(state => state.auth);
    const auth = JSON.parse(localStorage.getItem('auth'));
-   console.log(typeof auth);
-   console.log(auth);
 
    useEffect(() => {
       dispatch(startChecking());

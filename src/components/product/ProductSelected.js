@@ -24,7 +24,7 @@ export const ProductSelected = () => {
 
    if (!data) return <div>Loading...</div>;
 
-   const { code, nameProduct, price, cant, category, url } = data.product[0];
+   const { _id: idProduct, code, nameProduct, price, cant, category, url } = data.product[0];
 
    const formatPrice = setFormatPrice(price);
    const total = counter * price;
@@ -38,7 +38,7 @@ export const ProductSelected = () => {
             showConfirmButton: false,
             timer: 2000
          })
-         dispatch(addNewProduct(code, nameProduct, total, cant, category, url, counter, price));
+         dispatch(addNewProduct(idProduct, code, nameProduct, total, cant, category, url, counter, price));
       } else {
          Swal.fire({
             icon: 'error',

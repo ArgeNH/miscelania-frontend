@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { Orders } from '../components/admin/user/Orders';
+import { OrderSelected } from '../components/admin/user/OrderSelected';
 import { Error404 } from '../components/alerts/Error404';
 
 import { ShoppingScreen } from '../components/cart/ShoppingScreen';
@@ -39,6 +41,8 @@ export const DashboardRoutes = () => {
                <Route path='compra' element={<ShoppingScreen />} />
                <Route path='gracias' element={<Success />} />
                <Route path='cancelado' element={<Cancel />} />
+               <Route path='order' element={<Orders />} />
+               <Route path='order/:id' element={<OrderSelected />} />
 
                <Route path='*' element={<Navigate to='/404' />} />
             </Routes>

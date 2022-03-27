@@ -12,6 +12,7 @@ import { ItemCart } from './ItemCart';
 export const ShoppingScreen = () => {
 
    const { products } = useSelector(state => state.cart);
+   console.log(products);
    const { _id } = useSelector(state => state.auth);
 
    const dispatch = useDispatch();
@@ -51,8 +52,10 @@ export const ShoppingScreen = () => {
                   'Content-Type': 'application/json'
                },
                body: JSON.stringify({
+                  pay: true,
                   value: totalPrice,
-                  products
+                  products,
+                  user: _id
                })
             })
                .then(response => response.json())

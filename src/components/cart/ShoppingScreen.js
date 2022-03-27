@@ -12,7 +12,7 @@ import { ItemCart } from './ItemCart';
 export const ShoppingScreen = () => {
 
    const { products } = useSelector(state => state.cart);
-   console.log(products);
+
    const { _id } = useSelector(state => state.auth);
 
    const dispatch = useDispatch();

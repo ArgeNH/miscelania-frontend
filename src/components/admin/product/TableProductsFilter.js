@@ -21,7 +21,6 @@ export const TableProductsFilter = () => {
     console.log(search); */
 
    const { category } = formValues;
-   console.log(category);
 
    const url = 'https://miscelanea-api.herokuapp.com/api/product';
 

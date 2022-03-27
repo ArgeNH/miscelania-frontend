@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import { setFormatPrice } from '../../../helpers/setFormatPrice';
 
-export const ItemOrderProduct = ({ url, nameProduct, category, price }) => {
+export const ItemOrderProduct = ({ url, nameProduct, category, price, cant }) => {
 
    const formatPrice = setFormatPrice(price);
+   const cantTotal = cant * price;
+   const formatCantTotal = setFormatPrice(cantTotal);
 
    return (
       <li className="flex items-center justify-between py-4">
@@ -26,17 +28,21 @@ export const ItemOrderProduct = ({ url, nameProduct, category, price }) => {
                   </div>
 
                   <div>
-                     <dt className="inline">Precio unitatrio:</dt>
+                     <dt className="inline">Precio unitario:</dt>
                      <dd className="inline"> {formatPrice}</dd>
+                  </div>
+
+                  <div>
+                     <dt className="inline">Cantidad:</dt>
+                     <dd className="inline"> {cant}</dd>
                   </div>
                </dl>
             </div>
          </div>
 
          <div>
-            <p className="text-sm">
-               $49.99
-               <small className="text-gray-500">x1</small>
+            <p className="text-base">
+               <strong>{formatCantTotal}</strong>
             </p>
          </div>
       </li>
@@ -46,5 +52,6 @@ ItemOrderProduct.propTypes = {
    url: PropTypes.string,
    nameProduct: PropTypes.string,
    category: PropTypes.string,
-   price: PropTypes.number
+   price: PropTypes.number,
+   cant: PropTypes.number
 }

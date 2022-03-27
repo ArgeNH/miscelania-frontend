@@ -35,7 +35,7 @@ export const Nabvar = () => {
             </Hamburger>
             <Menu isOpen={isOpen}>
                <MenuLink to='/' onClick={open}>Inicio</MenuLink>
-               {role === 'ADMIN' && <MenuLink to='/productos' onClick={open}>Productos</MenuLink>}
+               {role === 'ADMIN' && <MenuLink to='/admin' onClick={open}>ADMIN</MenuLink>}
 
                <MenuLink to='/compra' onClick={open}>
                   🛒

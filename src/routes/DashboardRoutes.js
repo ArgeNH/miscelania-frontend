@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { Admin } from '../components/admin/Admin';
 import { Orders } from '../components/admin/user/Orders';
 import { OrderSelected } from '../components/admin/user/OrderSelected';
 import { Error404 } from '../components/alerts/Error404';
@@ -43,6 +44,7 @@ export const DashboardRoutes = () => {
                <Route path='cancelado' element={<Cancel />} />
                <Route path='order' element={<Orders />} />
                <Route path='order/:id' element={<OrderSelected />} />
+               <Route path='admin' element={<Admin />} />
 
                <Route path='*' element={<Navigate to='/404' />} />
             </Routes>

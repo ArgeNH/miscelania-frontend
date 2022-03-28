@@ -1,7 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
+import { Error404 } from '../alerts/Error404';
+
 export const Admin = () => {
+
+   const { role } = useSelector(state => state.auth);
+
+   if (role === undefined || role === 'CLIENT') {
+      return (
+         <Error404 name='Permisos insuficientes' desc='El usuario no cuenta con los permisos para ver esta pagina, por favor contacte con el admin del sitio' />
+      )
+   }
+
    return (
       <>
 

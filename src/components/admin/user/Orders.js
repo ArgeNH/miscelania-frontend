@@ -13,14 +13,14 @@ export const Orders = () => {
 
    const { role } = useSelector(state => state.auth);
 
+   const url = 'https://miscelanea-api.herokuapp.com/api/order/';
+   const { data } = useSWR(url, fetcher);
+
    if (role === undefined || role === 'CLIENT') {
       return (
          <Error404 name='Permisos insuficientes' desc='El usuario no cuenta con los permisos para ver esta pagina, por favor contacte con el admin del sitio' />
       )
    }
-
-   const url = 'https://miscelanea-api.herokuapp.com/api/order/';
-   const { data } = useSWR(url, fetcher);
 
    if (!data) return <div className='mt-20'>Loading...</div>;
 
@@ -59,7 +59,7 @@ export const Orders = () => {
                               </th>
                               <th
                                  className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-base font-semibold text-gray-600 uppercase tracking-wider">
-                                 Ver pedido
+                                 Acciones
                               </th>
                            </tr>
                         </thead>

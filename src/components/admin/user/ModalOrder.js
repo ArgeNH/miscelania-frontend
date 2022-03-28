@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 import { useForm } from '../../../hooks/useForm';
 
-export const ModalOrder = ({ _id, modal, name }) => {
+export const ModalOrder = ({ _id, modal, name, email }) => {
 
    const [formValues, handleInputChange] = useForm({
       pay: ''
@@ -28,13 +28,33 @@ export const ModalOrder = ({ _id, modal, name }) => {
       })
          .then(response => response.json())
          //eslint-disable-next-line
-         .then(data => {
+         .then(async (data) => {
             Swal.fire({
                title: 'Orden Actualizada',
                text: 'La orden se ha actualizado correctamente',
                icon: 'success',
                confirmButtonText: 'Ok'
             })
+            await fetch(`https://miscelanea-api.herokuapp.com/api/user/sendEmail/${email}`)
+               .then(response => response.json())
+               .then(data => {
+                  if (data.success) {
+                     Swal.fire({
+                        title: 'Correo enviado',
+                        text: 'Se ha enviado un correo a la cuenta del cliente',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                     })
+                  } else {
+                     Swal.fire({
+                        title: 'Correo no enviado',
+                        text: 'No se ha podido enviar el correo',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                     })
+                  }
+               })
+               .catch(err => console.log('lol', err));
             modal(false);
             setTimeout(() => {
                window.location.reload();
@@ -127,5 +147,6 @@ ModalOrder.propTypes = {
    _id: PropTypes.string,
    pay: PropTypes.bool,
    modal: PropTypes.func,
-   name: PropTypes.string
+   name: PropTypes.string,
+   email: PropTypes.string
 }

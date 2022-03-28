@@ -18,7 +18,7 @@ export const ItemOrder = ({ _id, user, date, pay }) => {
       weekdaysMin: 'Do_Lu_Ma_Mi_Ju_Vi_Sa'.split('_')
    });
 
-   const { name, lastName } = user;
+   const { name, lastName, email } = user;
 
    const dateOrder = moment(date).format('MMMM Do YYYY, h:mm:ss a');
 
@@ -107,7 +107,7 @@ export const ItemOrder = ({ _id, user, date, pay }) => {
             </td>
          </tr>
          {
-            modal ? <ModalOrder _id={_id} pay={pay} modal={setModal} name={`${name} ${lastName}`} /> : null
+            modal ? <ModalOrder _id={_id} pay={pay} modal={setModal} name={`${name} ${lastName}`} email={email} /> : null
          }
       </>
    )

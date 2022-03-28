@@ -13,7 +13,7 @@ export const ShoppingScreen = () => {
 
    const { products } = useSelector(state => state.cart);
 
-   const { _id } = useSelector(state => state.auth);
+   const { _id, email } = useSelector(state => state.auth);
 
    const dispatch = useDispatch();
    const navigate = useNavigate();
@@ -55,7 +55,8 @@ export const ShoppingScreen = () => {
                   pay: true,
                   value: totalPrice,
                   products,
-                  user: _id
+                  user: _id,
+                  email
                })
             })
                .then(response => response.json())
